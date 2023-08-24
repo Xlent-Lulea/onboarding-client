@@ -3,7 +3,10 @@
 #welcome-popup {
   font-family: 'Poppins', sans-serif;
   padding: 20px;
-  top: 12px;
+  top: 60px;
+  position: fixed;
+  left: 400px;
+  
 }
 
 #welcome-popup-title {
@@ -12,4 +15,5 @@
 
 #welcome-popup-text {
   color: black;
+  
 }

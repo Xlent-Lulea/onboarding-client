@@ -85,9 +85,11 @@ export class AppComponent implements OnInit {
 
       // Öppna WelcomePopupComponent efter att den valda personens information hämtats
       if(this.selectedPerson) {
-        this.welcomeDialogRef = this.dialog.open(WelcomePopupComponent, {
+        this.welcomeDialogRef = this.dialog.open(WelcomePopupComponent,  {
+          
             data: {
-                personName: this.selectedPerson.name
+                personName: this.selectedPerson.name,
+                hasBackdrop: false
             },
             width: '400px'
         });

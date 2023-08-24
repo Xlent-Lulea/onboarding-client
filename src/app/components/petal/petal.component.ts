@@ -22,63 +22,143 @@ export interface Petal {
   templateUrl: './petal.component.html',
   styleUrls: ['./petal.component.css']
 })
-export class PetalComponent {
-  @ViewChild('drawer') sidenav!: MatDrawer;
-  selectedPetal: Petal | null = null;
-  petals: Petal[] = [
-    {
-      imageAvatarUrl: 'https://www.w3schools.com/howto/img_avatar.png',
-      title: 'Anställning och admin',
-      subtitle: 'Veronica Andersson',
-      description: 'Vår VD är Veronica, det är hon som har koll på vad som behöver vara på plats i och med din anställningsstart',
-      imageUrl: 'https://www.w3schools.com/howto/img_avatar.png',
-      urlNamn: 'Maconomy',
-      url: 'https://me50653-iaccess.deltekfirst.com/oauth'
-    },
-    {
-      imageAvatarUrl: 'https://th.bing.com/th/id/OIG.2cFXsriBPnvyLfdE5jag?pid=ImgGn',
-      title: 'Blomblad 2',
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'https://th.bing.com/th/id/OIG.2cFXsriBPnvyLfdE5jag?pid=ImgGn',
-      urlNamn: 'url2',
-      url: 'http://www.url2.com'
-    },
-    {
-      imageAvatarUrl: 'data.jpg', 
-      title: 'Blomblad 3',
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'data.jpg',
-      urlNamn: 'Startklar',
-      url: 'http://www.url2.com'
-    },
-    {
-      title: 'Blomblad 4',
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'bild2.jpg',
-      url: 'http://www.url2.com'
-    },
-    {
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'bild2.jpg',
-      url: 'http://www.url2.com'
-    },
-    {
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'bild2.jpg',
-      url: 'http://www.url2.com'
-    },
-    {
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'bild2.jpg',
-      url: 'http://www.url2.com'
-    },
-    {
-      description: 'Beskrivning för blomblad 2',
-      imageUrl: 'bild2.jpg',
-      url: 'http://www.url2.com'
-    },
-    
-  ];
+
+  export class PetalComponent {
+
+    @ViewChild('drawer') sidenav!: MatDrawer;
+  
+    selectedPetal: Petal | null = null;
+  
+    petals: Petal[] = [
+  
+      {
+  
+        imageAvatarUrl: 'https://www.w3schools.com/howto/img_avatar.png',
+  
+        title: 'Välkommen',
+  
+        subtitle: 'Veronica Andersson',
+  
+        description: 'Vår VD är Veronica, det är hon som har koll på vad som behöver vara på plats i och med din anställningsstart',
+  
+        imageUrl: 'https://www.w3schools.com/howto/img_avatar.png',
+  
+        urlNamn: 'Maconomy',
+  
+        url: 'https://me50653-iaccess.deltekfirst.com/oauth'
+  
+      },
+  
+      {
+  
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.2cFXsriBPnvyLfdE5jag?pid=ImgGn',
+  
+        title: 'Buddy/coach',
+  
+        description: 'Du har säkert redan träffat din Buddy, som är den som håller ihop din intro och har lite extra koll på att du får svar på dina frågor och funderingar. Sen efter några månader när du kommit igång, så kommer du få möjlighet att själv önska en coach.  ',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.2cFXsriBPnvyLfdE5jag?pid=ImgGn',
+  
+        urlNamn: 'Buddy/coach',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+  
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        title: 'Startklar',
+  
+        description: 'Beskrivning för blomblad 2',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Startklar',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+  
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+        title: 'Anställning och admin',
+  
+        description: 'Beskrivning för blomblad 2',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Anställning och admin',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        title: 'Digital setup',
+  
+        description: 'Beskrivning för blomblad 2',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Digital setup',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        title: 'Konsultrollen ',
+  
+        description: 'Konsultrollen',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Startklar',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        title: 'Konsultrollen ',
+  
+        description: 'Beskrivning för blomblad 2',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Startklar',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+      {
+        imageAvatarUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        title: 'Konsultrollen',
+  
+        description: 'Beskrivning för blomblad 2',
+  
+        imageUrl: 'https://th.bing.com/th/id/OIG.VBrZKMr3FOvzlq5Zlewt?pid=ImgGn',
+  
+        urlNamn: 'Startklar',
+  
+        url: 'http://www.url2.com'
+  
+      },
+  
+     
+  
+    ];
 
 
 @Input() petal: Petal = { description: '', imageUrl: '', url: '' }; // Provide a default value  
