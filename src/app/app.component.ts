@@ -1,5 +1,5 @@
 //app.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ThemeService } from './theme.service';
@@ -11,6 +11,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommunicationService } from './services/CommunicationService';
 import { WelcomePopupComponent } from './components/welcome-popup/welcome-popup.component';
+import { Subscription } from 'rxjs';4
+
 
 
 
@@ -20,7 +22,7 @@ import { WelcomePopupComponent } from './components/welcome-popup/welcome-popup.
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'onboarding-xlu';
   showFlower = true;
   isDarkMode = false;
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit {
   selectedPerson: Person | null = null;
   selectedTaskType = '';
   tasks = [];
-  welcomeDialogRef: any;
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private router: Router,
@@ -43,15 +45,13 @@ export class AppComponent implements OnInit {
     private communicationService: CommunicationService,
    
   ) {
-    communicationService.changeEmitted$.subscribe((data) => {
-      // here fetch data from the session storage
+    const routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe((event: any) => {
+      this.showFlower = event.url === '/' || event.url === '';
     });
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        this.showFlower = event.url === '/' || event.url === '';
-      });
-  }
+  
+  this.subscriptions.push(routerSub);
+}
 
   // openTaskListPopup(): void {
   //   const dialogRef = this.dialog.open(TaskListPopupComponent, {
@@ -65,6 +65,11 @@ export class AppComponent implements OnInit {
   // }
 
   // In your Angular component
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
   ngOnInit(): void {
     this.personService.getActivePersons().subscribe((persons) => {
       this.activePersons = persons;
@@ -74,7 +79,7 @@ export class AppComponent implements OnInit {
   onPersonSelected(personId: number) {
     console.log('onPersonSelected:', personId);
     this.selectedPersonService.setPersonId(personId.toString());
-  
+
     // Fetch the selected person details
     this.personService.getPerson(personId).subscribe((person) => {
       this.selectedPerson = person;
@@ -82,23 +87,8 @@ export class AppComponent implements OnInit {
         personId,
         this.selectedTaskType ? this.selectedTaskType : 'BLOMBLAD_1'
       );
-
-      // Öppna WelcomePopupComponent efter att den valda personens information hämtats
-      if(this.selectedPerson) {
-        this.welcomeDialogRef = this.dialog.open(WelcomePopupComponent,  {
-          
-            data: {
-                personName: this.selectedPerson.name,
-                hasBackdrop: false
-            },
-            width: '400px'
-        });
-      }
-      
     });
-}
-
-  
+  }
 
   getPersonTasks(personId: number, taskType: string) {
     this.taskService

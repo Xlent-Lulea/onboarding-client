@@ -8,52 +8,44 @@
       <mat-icon>{{ themeService.isDarkMode() ? 'brightness_7' : 'brightness_3' }}</mat-icon> 
     </button> -->
      
-     <div class="personvaljar-lista">
-     <mat-form-field>
-<!-- Visar aktivt namn efter man valt i rullistan -->
-      <mat-label><div *ngIf="selectedPerson">  
-        <p>{{selectedPerson.name}}</p>
-    </div>
-    </mat-label>
-        
-    
-<!-- Personvaljare -->
-
-      <mat-select [(value)]="selectedPerson" (selectionChange)="onPersonSelected(selectedPerson!.id)">
-
-        <mat-option *ngFor="let person of activePersons" [value]="person">
-
-             {{ person.name }} <!--{{ person.active ? 'Aktiv' : 'Inaktiv' }}  {{ person.id }} -->
-
-        </mat-option>
-
-    </mat-select>  
-
-    </mat-form-field>
+    <div class="personvaljar-lista">
+      <mat-form-field>
+        <!-- Visar aktivt namn efter man valt i rullistan -->
+        <mat-label><div *ngIf="selectedPerson">{{selectedPerson.name}}</div></mat-label>
          
-    <button id="hem-knapp" mat-icon-button color="secondary" routerLink=""><mat-icon>home</mat-icon></button>
+        <!-- Personvaljare -->
+        <mat-select [(value)]="selectedPerson" (selectionChange)="onPersonSelected(selectedPerson!.id)">
+          <mat-option *ngFor="let person of activePersons" [value]="person">
+            {{ person.name }}
+          </mat-option>
+        </mat-select>  
+      </mat-form-field>
 
-    <button id="admin-knapp" mat--button color="secondary" routerLink="/admin-page"><mat-icon>build</mat-icon></button> 
-  
+      
+          
+      <!-- <button id="hem-knapp" mat-icon-button color="secondary" routerLink="">
+        <mat-icon>home</mat-icon>
+      </button> -->
+    
+      <!-- <button id="admin-knapp" mat-button color="secondary" routerLink="/admin-page">
+        <mat-icon>build</mat-icon>
+      </button>  -->
+    </div>
+     
+    <div *ngIf="selectedPerson" id="welcome-section">
+      <h2>Hej {{selectedPerson.name}}!</h2>
+      <p>
+        Varmt välkommen till XLENT! Vi är väldigt glada att du blir en del av vårt gäng! XLENT har en ”onboardingsprocess” som rullar igång när vi får en nyanställd. Tanken med processen är att Du som nyanställd så snabbt som möjligt ska komma igång och känna dig trygg och startklar, när det är dags för första uppdraget.
+      </p>
+      <p>
+        Vi har valt att beskriva processen som en blomma med ett blad för varje delområde som ingår. Klicka gärna runt i blomman så får du en liten glimt av vad de olika delarna innehåller!
+      </p>
+    </div>
+    <div *ngIf="!selectedPerson">
+      Välj användare här för att börja
     </div>
     
-    
 
-
-
-
-
-   
-    
- 
-
-    
-
-
-
-
-  
-  
-    
     <router-outlet></router-outlet>
+    
 

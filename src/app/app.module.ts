@@ -32,9 +32,9 @@ import { ManageTasksComponent } from './components/manage-tasks/manage-tasks.com
 import { ManagePersonsComponent } from './components/manage-persons/manage-persons.component';
 import { CommunicationService } from './services/CommunicationService';
 import { PetalComponent } from './components/petal/petal.component';
-import { WelcomePopupComponent } from './components/welcome-popup/welcome-popup.component';
 import { ChoosePersonComponent } from './components/choose-person/choose-person.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { WelcomePopupComponent } from './components/welcome-popup/welcome-popup.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ManageTasksComponent,
     ManagePersonsComponent,
     PetalComponent,
-    WelcomePopupComponent,
     ChoosePersonComponent,
+    WelcomePopupComponent
   ],
   imports: [
     BrowserModule,
